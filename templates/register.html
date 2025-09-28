@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Login - Sistema Acadêmico{% endblock %}
+{% block title %}Registro - Sistema Acadêmico{% endblock %}
 
 {% block content %}
     <article>
-        <h1 align="center">Login do Professor</h1>
+        <h1 align="center">Registro de Novo Professor</h1>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -14,15 +14,18 @@
             {% endif %}
         {% endwith %}
 
-        <form method="POST" action="{{ url_for('login') }}">
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Seu email" required>
             
             <label for="senha">Senha</label>
-            <input type="password" id="senha" name="senha" placeholder="Sua senha" required>
+            <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required>
             
-            <button type="submit">Entrar</button>
+            <button type="submit">Registrar</button>
         </form>
-        <p>Ainda não tem uma conta? <a href="{{ url_for('register') }}">Registre-se aqui</a>.</p>
+        <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça o login aqui</a>.</p>
     </article>
 {% endblock %}
